@@ -18,9 +18,10 @@ class SendEmail:
 
     def Send(self):
 
-        """Use Gmail Server to send emails. Use the following url to set less secure Gmail access
-        https://myaccount.google.com/lesssecureapps"""
-
+        """
+        Use Gmail Server to send emails. Use the following url to set less secure Gmail access
+        https://myaccount.google.com/lesssecureapps
+        """
         with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
             smtp.ehlo()
             smtp.starttls()
@@ -28,7 +29,6 @@ class SendEmail:
             smtp.login(self.email, self.password)
 
             subject = f"{self.item} ${self.price} is back stock!"
-
             msg = f"Subject: {subject} \n\n {self.url}"
 
             smtp.sendmail(self.email, email_receivers, msg)
